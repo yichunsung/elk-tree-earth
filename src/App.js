@@ -18,6 +18,10 @@ function App() {
         <span>
           <Link to="/about/company">About company page</Link>
         </span>
+        <br />
+        <span>
+          <Link to="/three">Three.js</Link>
+        </span>
         <header className="App-header">
           <Switch>
             {
