@@ -12,7 +12,7 @@ const ThreePage = () => {
   const run = () => {
     console.log('Run');
 
-    let scene, renderer, camera, cube;
+    let scene, renderer, camera, cube, base;
     // let container = document.getElementById('output');
     // 
     // 初始化場景、渲染器、相機、物體
@@ -34,7 +34,7 @@ const ThreePage = () => {
         0.1,
         300
       );
-      camera.position.set(10, 10, 10);
+      camera.position.set(20, 8, 15);
       camera.lookAt(scene.position);
 
       // 建立光源
@@ -44,21 +44,35 @@ const ThreePage = () => {
 
       // 建立物體
       const geometry = new THREE.BoxGeometry(1, 1, 1) // 幾何體
+      const baseGeometry = new THREE.BoxGeometry(1.5, 1.5, 1.5) // 幾何體
       const material = new THREE.MeshPhongMaterial({
         color: 0x9999ff
       }); // 材質
+      const baseMaterial = new THREE.MeshPhongMaterial({
+        color: 0xcc0000
+      }); // 材質
+
       cube = new THREE.Mesh(geometry, material); // 建立網格物件
-      cube.position.set(0, 0, 0);
+      cube.position.set(0, 1, 0);
+      //cube.rotation.x = 10;
+      //cube.rotation.y = 10;
       scene.add(cube);
+
+      base = new THREE.Mesh(baseGeometry, baseMaterial); // 建立網格物件
+      base.position.set(0, -0.25, 0);
+      //cube.rotation.x = 10;
+      //cube.rotation.y = 10;
+      scene.add(base);
     }
 
     const animate = () => {
       cube.rotation.x += 0.06;
       cube.rotation.y += 0.01;
+      cube.rotation.z += 0.03;
     }
 
     const render = () => {
-      animate();
+      // animate();
       requestAnimationFrame(render);
       renderer.render(scene, camera);
     }
