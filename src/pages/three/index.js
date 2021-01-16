@@ -68,8 +68,6 @@ const ThreePage = () => {
 
   return (
     <main>
-      <h1> Three.js </h1>
-      <button onClick={ () => { run(); } }> Start </button>
       <div ref={ container }></div>
     </main>
   )
