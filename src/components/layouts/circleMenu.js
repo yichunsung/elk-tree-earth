@@ -1,7 +1,7 @@
-import '../../assets/style/circleMenu.css';
 import { useState } from 'react';
 // eslint-disable-next-line
 import { BrowserRouter as Router, Link, Redirect } from "react-router-dom";
+import '../../assets/style/circleMenu.css';
 
 const CircleMenu = () => {
 
@@ -20,22 +20,27 @@ const CircleMenu = () => {
         <div className="btn trigger" onClick={ () => { openMenu() } }>
           <span className="line"></span>
         </div>
-        <Router>
         <div className="icons">
           <div className="rotater">
-            <div className="btn btn-icon">
-              <Link to="/three"><i className="fa fa-codepen"></i></Link>
-            </div>
+            <Link to="/three">
+              <div className="btn btn-icon">
+                Three
+              </div>
+            </Link>
           </div>
           <div className="rotater">
-            <div className="btn btn-icon">
-              <i className="fa fa-facebook"></i>
-            </div>
+            <Link to="/about">
+              <div className="btn btn-icon">
+                About
+              </div>
+            </Link>
           </div>
           <div className="rotater">
-            <div className="btn btn-icon">
-              <i className="fa fa-google-plus"></i>
-            </div>
+            <Link to="/about/company">
+              <div className="btn btn-icon">
+                Company
+              </div>
+            </Link>
           </div>
           <div className="rotater">
             <div className="btn btn-icon">
@@ -63,7 +68,6 @@ const CircleMenu = () => {
             </div>
           </div>
         </div>
-        </Router>
       </div>
     </main>
   )

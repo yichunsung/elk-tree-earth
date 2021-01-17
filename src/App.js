@@ -1,30 +1,13 @@
 // Router settings.
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routes from './router/index.js';
+import CircleMenu from './components/layouts/circleMenu.js';
 
 function App() {
   return (
     <Router>
       <div className="app">
-        <nav className="app-nav">
-          <main className="app-nav-container">
-            <div className="app-nav-left">
-              { /* <Link to="/">Home page</Link> */ }
-              
-            </div>
-            <div className="app-nav-right">
-              <div className="app-nav-item">
-                <Link to="/about">About page</Link>
-              </div>
-              <div className="app-nav-item">
-                <Link to="/about/company">About company page</Link>
-              </div>
-              <div className="app-nav-item">
-                 <Link to="/three">Three.js</Link>
-              </div>
-            </div>
-          </main>
-        </nav>
+        <CircleMenu />
         <section className="app-view">
           <Switch>
             {

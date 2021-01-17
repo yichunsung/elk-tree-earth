@@ -36,6 +36,12 @@
   transform: translateX(0);
 }
 
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .menu .btn .fa {
   font-size: 3em;
   transition: color 0.3s;
