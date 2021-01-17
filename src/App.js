@@ -1,6 +1,5 @@
 // Router settings.
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import './assets/style/App.css';
 import routes from './router/index.js';
 
 function App() {

@@ -1,0 +1,20 @@
+div.three-start-button {
+  position: fixed;
+  top: 80vh;
+  right: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: #333;
+  color: lightblue;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+div.three-start-button:hover {
+  background-color: #000;
+  color: #fff;
+}

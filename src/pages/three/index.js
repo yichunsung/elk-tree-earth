@@ -1,7 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 const ThreePage = () => {
+
+  const [cube, setCube] = useState(null);
 
   useEffect(() => {
     run();
@@ -10,8 +12,6 @@ const ThreePage = () => {
   const container = useRef();
   
   const run = () => {
-    console.log('Run');
-
     let scene, renderer, camera, cube, base;
     // let container = document.getElementById('output');
     // 
@@ -56,6 +56,8 @@ const ThreePage = () => {
       cube.position.set(0, 1, 0);
       //cube.rotation.x = 10;
       //cube.rotation.y = 10;
+      
+      setCube(cube);
       scene.add(cube);
 
       base = new THREE.Mesh(baseGeometry, baseMaterial); // 建立網格物件
@@ -65,11 +67,11 @@ const ThreePage = () => {
       scene.add(base);
     }
 
-    const animate = () => {
+    /*const animate = () => {
       cube.rotation.x += 0.06;
       cube.rotation.y += 0.01;
       cube.rotation.z += 0.03;
-    }
+    }*/
 
     const render = () => {
       // animate();
@@ -81,8 +83,15 @@ const ThreePage = () => {
     render();
   }
 
+  const animate = () => {
+    cube.rotation.x += 0.06;
+    cube.rotation.y += 0.01;
+    cube.rotation.z += 0.03;
+  }
+
   return (
     <main>
+      <div className="three-start-button" onClick={ () => { animate() } }>START</div>
       <div ref={ container }></div>
     </main>
   )
