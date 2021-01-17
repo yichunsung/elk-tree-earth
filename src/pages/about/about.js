@@ -1,6 +1,7 @@
 import { useState } from 'react';
 // eslint-disable-next-line
 import { BrowserRouter as Link, Redirect } from "react-router-dom";
+import CircleMenu from '../../components/layouts/circleMenu.js';
 
 const About = () => {
 
@@ -23,6 +24,7 @@ const About = () => {
         { pageName }
       </h2>
       <button onClick={ () => { changeName() } }>Change Name</button>
+      <CircleMenu />
     </main>
   )
 }
