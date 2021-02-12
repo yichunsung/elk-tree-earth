@@ -47,8 +47,8 @@ const ThreePage = () => {
       cameraControl.enableZoom = true;
 
       // 建立光源
-      let pointLight = new THREE.PointLight(0xffffff);
-      pointLight.position.set(30, 10, -10);
+      let pointLight = new THREE.AmbientLight(0xffffff);
+      pointLight.position.set(1000, 100, -10);
       scene.add(pointLight);
 
       // 建立物體
@@ -66,7 +66,7 @@ const ThreePage = () => {
       // Ball
       const ball = new THREE.SphereGeometry( 5, 32, 32 );
       const ballMaterial = new THREE.MeshStandardMaterial({
-        color: 0x016894,
+        // color: 0x016894,
         transparent: false,
         metalness: 0.2,
         opacity: 1,
@@ -74,7 +74,7 @@ const ThreePage = () => {
         map: earthMap
       });
       const ballMaterial2 = new THREE.MeshStandardMaterial({
-        color: 0x016894,
+        // color: 0x016894,
         transparent: false,
         metalness: 0.2,
         opacity: 1,
