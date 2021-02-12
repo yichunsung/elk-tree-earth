@@ -70,7 +70,7 @@ div.app-nav-right a:active {
 }
 
 section.app-view {
-  margin-top: 4vw;
+  margin-top: 0;
 }
 
 @keyframes app-logo-spin {
