@@ -44,7 +44,7 @@ const ThreePage = () => {
 
       cameraControl.enableDamping = true;
       cameraControl.dampingFactor = 0.25;
-      cameraControl.enableZoom = false;
+      cameraControl.enableZoom = true;
 
       // 建立光源
       let pointLight = new THREE.PointLight(0xffffff);

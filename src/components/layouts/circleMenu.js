@@ -43,9 +43,11 @@ const CircleMenu = () => {
             </Link>
           </div>
           <div className="rotater">
-            <div className="btn btn-icon">
-              <i className="fa fa-twitter"></i>
-            </div>
+            <Link to="/cube">
+              <div className="btn btn-icon">
+                Cube
+              </div>
+            </Link>
           </div>
           <div className="rotater">
             <div className="btn btn-icon">
