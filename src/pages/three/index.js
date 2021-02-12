@@ -61,10 +61,28 @@ const ThreePage = () => {
         color: 0xcc0000
       }); // 材質
 
+      const earthMap = new THREE.TextureLoader().load('/earth.png');
+
       // Ball
       const ball = new THREE.SphereGeometry( 5, 32, 32 );
-      const ballMaterial = new THREE.MeshPhongMaterial(mashMaterialParams());
-      const sphere = new THREE.Mesh( ball, ballMaterial );
+      const ballMaterial = new THREE.MeshStandardMaterial({
+        color: 0x016894,
+        transparent: false,
+        metalness: 0.2,
+        opacity: 1,
+        wireframe: false,
+        map: earthMap
+      });
+      const ballMaterial2 = new THREE.MeshStandardMaterial({
+        color: 0x016894,
+        transparent: false,
+        metalness: 0.2,
+        opacity: 1,
+        wireframe: false,
+        map: earthMap
+      });
+      let bullArr = [ballMaterial, ballMaterial2];
+      const sphere = new THREE.Mesh( ball, bullArr );
 
       scene.add(sphere);
 

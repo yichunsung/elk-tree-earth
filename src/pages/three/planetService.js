@@ -6,12 +6,12 @@ export const state = {
 };
 
 export const mashMaterialParams = () => {
-	return {
-		color: 0x016894,
+  return {
+    color: 0x016894,
     transparent: false,
     opacity: 1,
     wireframe: false
-	}
+  }
 };
 
 export const cubePruducer = () => {
