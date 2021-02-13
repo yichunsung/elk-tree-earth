@@ -45,7 +45,7 @@ function LittleTokyo() {
       cameraControl.enableZoom = true;
 
       // 建立光源
-      let pointLight = new THREE.DirectionalLight(0xffffff, 2);
+      let pointLight = new THREE.AmbientLightProbe(0xffffff, 2);
       pointLight.position.set(-10, 20, 20)
       scene.add(pointLight);
 
@@ -115,18 +115,19 @@ function LittleTokyo() {
       const loader = new GLTFLoader();
       loader.setDRACOLoader( dracoLoader );
       loader.load( '/LittlestTokyo.glb', function ( gltf ) {
+        console.log(gltf);
         const model = gltf.scene;
         model.position.set( 1, 1, 0 );
         model.scale.set( 0.01, 0.01, 0.01 );
         model.traverse( function ( child ) {
-
+        
         if ( child.isMesh ) {
           child.material.envMap = envMap;
         }
 
       });
 
-      scene.add( model );
+        scene.add( model );
       }, undefined, function ( e ) {
 
         console.error( e );
