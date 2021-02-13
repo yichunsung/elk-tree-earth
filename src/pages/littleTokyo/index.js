@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
-function CubePage() {
+function LittleTokyo() {
 
   const [cube, setCube] = useState(null);
 
@@ -97,8 +97,41 @@ function CubePage() {
       wall.position.set(0, 0, 0);
       plane.position.set(0, -1, 0);
       plane.rotation.x = -0.5 * Math.PI;
-      scene.add(wall);
-      scene.add(plane);
+      // scene.add(wall);
+      // scene.add(plane);
+      
+
+      // envmap
+      const path = '/';
+      const format = '.jpg';
+      const envMap = new THREE.CubeTextureLoader().load( [
+        path + 'posx' + format, path + 'negx' + format,
+        path + 'posy' + format, path + 'negy' + format,
+        path + 'posz' + format, path + 'negz' + format
+      ] );
+      const dracoLoader = new DRACOLoader();
+      dracoLoader.setDecoderPath( '/draco/gltf/' );
+
+      const loader = new GLTFLoader();
+      loader.setDRACOLoader( dracoLoader );
+      loader.load( '/LittlestTokyo.glb', function ( gltf ) {
+        const model = gltf.scene;
+        model.position.set( 1, 1, 0 );
+        model.scale.set( 0.01, 0.01, 0.01 );
+        model.traverse( function ( child ) {
+
+        if ( child.isMesh ) {
+          child.material.envMap = envMap;
+        }
+
+      });
+
+      scene.add( model );
+      }, undefined, function ( e ) {
+
+        console.error( e );
+
+      });
       setCube(wall);
     }
 
@@ -120,4 +153,4 @@ function CubePage() {
 
 }
 
-export default CubePage;
+export default LittleTokyo;

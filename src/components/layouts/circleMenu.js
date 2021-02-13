@@ -50,9 +50,11 @@ const CircleMenu = () => {
             </Link>
           </div>
           <div className="rotater">
-            <div className="btn btn-icon">
-              <i className="fa fa-dribbble"></i>
-            </div>
+            <Link to="/little-tokyo">
+              <div className="btn btn-icon">
+                Tokyo
+              </div>
+            </Link>
           </div>
           <div className="rotater">
             <div className="btn btn-icon">
