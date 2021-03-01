@@ -4,9 +4,13 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
+let scaleHeadOffsetData = 0;
+
 function CubePage() {
 
   const [cube, setCube] = useState(null);
+
+  const [scaleHeadOffset, setScaleHeadOffset] = useState(0);
 
   const cubContainer = useRef();
 
@@ -32,7 +36,7 @@ function CubePage() {
       cubContainer.current.appendChild(renderer.domElement);
       // 相機設定
       camera = new THREE.PerspectiveCamera(
-        15,
+        60,
         window.innerWidth / window.innerHeight,
         0.1,
         1000
@@ -121,18 +125,18 @@ function CubePage() {
       // 移動點光源
       pointLight = new THREE.PointLight(0xccffcc, 1, 100); // 顏色, 強度, 距離
       pointLight.castShadow = true; // 投影
-      pointLight.position.set(-30, 30, 30)
+      pointLight.position.set(-10, 30, 20)
       scene.add(pointLight);
 
       
 
       // 小球體模擬點光源實體
-      const sphereLightGeo = new THREE.SphereGeometry(5, 32, 32);
-      const sphereLightMat = new THREE.MeshBasicMaterial({ color: 0xff6600 });
+      const sphereLightGeo = new THREE.SphereGeometry(2, 32, 32);
+      const sphereLightMat = new THREE.MeshStandardMaterial({ color: 0xff6600 });
       sphereLightMesh = new THREE.Mesh(sphereLightGeo, sphereLightMat);
-      sphereLightMesh.position.set(-30, 30, 30)
+      sphereLightMesh.position.set(-10, 10, 20)
       sphereLightMesh.castShadow = true;
-      sphereLightMesh.position.y = 5;
+      // sphereLightMesh.position.y = 5;
       scene.add(sphereLightMesh);
 
     }
@@ -153,20 +157,38 @@ function CubePage() {
       pointLight.position.copy(sphereLightMesh.position);
     }
 
+    let scaleHeadOffset = 0;
+
+    const scaleBody = () => {
+      scaleHeadOffset += 0.04
+      // setScaleHeadOffset(scaleHeadOffset => scaleHeadOffset += 4);
+      let scaleRate = Math.abs(Math.sin(scaleHeadOffset)) / 16 + 1
+      wall.scale.set(scaleRate, scaleRate, scaleRate);
+    }
+
     const render = () => {
       cameraControl.update();
       // animate();
       // pointLightAnimation();
+      // scaleBody();
       requestAnimationFrame(render);
       renderer.render(scene, camera);
-    }
 
+    }
     init();
     render();
   }
+
+  const check = () => {
+    setScaleHeadOffset(scaleHeadOffset => scaleHeadOffset += 4);
+    let scaleRate = Math.abs(Math.sin(scaleHeadOffset)) / 16 + 1
+    cube.scale.set(scaleRate, scaleRate, scaleRate);
+  }
+  
   
   return (
     <main>
+       <div className="three-start-button" onClick={ () => { check() } }>START</div>
       <div ref={ cubContainer }></div>
     </main>
   )
